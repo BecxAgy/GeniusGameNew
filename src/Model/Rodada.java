@@ -95,12 +95,11 @@ public class Rodada {
     	timer.start(); // Inicia o timer para agendar os brilhos sequenciais
     }
 
-	
     
-    public Jogada criaJogada() {
-		// TODO Auto-generated method stub
-		return null;
+    public Jogada criaJogada(Jogador jogador) {
+
+    	Jogada jogadaCriada = new Jogada(jogador);
+		return jogadaCriada;
 	}
 
-    
 }

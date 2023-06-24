@@ -18,6 +18,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import Controller.GeniusGame;
+import Model.Jogada;
 import Model.Jogador;
 import Services.ViewService;
 
@@ -38,6 +39,7 @@ public class TesteP {
 	public static JLabel lblVerdeOn;
 	private GeniusGame sistema = new GeniusGame();
 	private Jogador jogadorAtual;
+	Jogada novaJogada = null;
 	
 	
 	
@@ -313,10 +315,8 @@ public class TesteP {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				sistema.getNovoCampeonato().iniciarCampeonato();
-				//contabilizar a sequencia do usuario com algum método que analize a sequencia que ele fez
+				jogadorAtual = sistema.getNovoCampeonato().getJogadores().get(0);
 				
-				//compara
-
 				
 		}
 			
@@ -372,9 +372,30 @@ public class TesteP {
 		lblClickVermelho.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ViewService.brilharBotao(lblVermelhoOn, 500, null);
-				sistema.receberResposta(3, jogadorAtual);
 				
+				boolean acertou;
+				
+				ViewService.brilharBotao(lblVermelhoOn, 500, null);
+				novaJogada=sistema.receberResposta(3, jogadorAtual);
+				if(novaJogada == null) {
+					
+				}else {
+				
+					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
+					
+					if(acertou) {
+						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+						novaJogada.setErrou(false);
+						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+						
+					}else {
+						
+						novaJogada.setErrou(true);
+						
+						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+						
+					}
+				}
 			}
 		});
 		lblClickVermelho.setBounds(494, 489, 187, 192);
@@ -384,8 +405,28 @@ public class TesteP {
 		lblClickVerde.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
+				boolean acertou;
+				
 				ViewService.brilharBotao(lblVerdeOn, 500, null);
-				sistema.receberResposta(1, jogadorAtual);
+				novaJogada=sistema.receberResposta(1, jogadorAtual);
+				if(novaJogada == null) {
+					
+				}else {
+				
+					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
+					
+					if(acertou) {
+						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+						novaJogada.setErrou(false);
+						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+						
+					}else {
+						JOptionPane.showMessageDialog(null,"passando a vez...", "errou",0);
+						novaJogada.setErrou(true);
+						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+					}
+				}
 				
 			}
 		});
@@ -396,8 +437,28 @@ public class TesteP {
 		lblClickAmarelo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
+				boolean acertou;
+				
 				ViewService.brilharBotao(lblAmareloOn, 500, null);
-				sistema.receberResposta(0, jogadorAtual);
+				novaJogada=sistema.receberResposta(0, jogadorAtual);
+				if(novaJogada == null) {
+					
+				}else {
+				
+					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
+					
+					if(acertou) {
+						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+						novaJogada.setErrou(false);
+						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+						
+					}else {
+						JOptionPane.showMessageDialog(null,"passando a vez...", "errou",0);
+						novaJogada.setErrou(true);
+						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+					}
+				}
 			}
 		});
 		lblClickAmarelo.setBounds(246, 272, 194, 156);
@@ -408,9 +469,28 @@ public class TesteP {
 		lblClickAzul.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ViewService.brilharBotao(lblAzulOn, 500, null);
-				sistema.receberResposta(2, jogadorAtual);
 				
+				boolean acertou;
+				
+				ViewService.brilharBotao(lblAzulOn, 500, null);
+				novaJogada= sistema.receberResposta(2, jogadorAtual);
+
+				if(novaJogada == null) {
+				}else {
+				
+					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
+					
+					if(acertou) {
+						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+						novaJogada.setErrou(false);
+						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+						
+					}else {
+						JOptionPane.showMessageDialog(null,"passando a vez...", "errou",0);
+						novaJogada.setErrou(true);
+						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+					}
+				}
 			}
 		});
 		lblClickAzul.setBounds(246, 489, 184, 207);

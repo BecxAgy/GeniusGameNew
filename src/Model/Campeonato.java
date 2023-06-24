@@ -3,6 +3,8 @@ package Model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class Campeonato {
 	
 	private String nome;
@@ -49,38 +51,42 @@ public class Campeonato {
 		return jogadores;
 	}
 
-	
-	
-	public Jogador getPlayer1() {
-		return jogadores.get(0);
-	}
-	public Jogador getPlayer2() {
-		return jogadores.get(1);
-	}
-	public Jogador getPlayer3() {
-		if(jogadores.size() == 3) return jogadores.get(2);
-		
-		return null;
-	}
+
 
 
 	public void iniciarCampeonato() {
         Rodada rodadaAtual;
-        
 
-        	
-        	rodadaAtual = jogadores.get(1).getNovaRodada();
-        	
-        	rodadaAtual.iniciarRodada(this.getDificuldade());
-        	
-        	System.out.println("proximo jogador!");
-        	
-        	
-        
+        	//como vou alternar os jogadores...
+        	rodadaAtual = jogadores.get(0).criaNovaRodada();       	
+        	rodadaAtual.iniciarRodada(this.getDificuldade());   	
 
     }
+	
+	public void continuarCampeonato(int indexJodador) {
+		 Rodada rodadaAtual;
 
-    
+     	//como vou alternar os jogadores...
+     	rodadaAtual = jogadores.get(indexJodador).criaNovaRodada();
+     	
+     	rodadaAtual.iniciarRodada(this.getDificuldade());
+	}
+
+    public Jogador passaVez(Jogador jogadorAnterior) {
+    	//qual index meu usuario esta 
+    	int posicao = jogadores.indexOf(jogadorAnterior) + 1; 
+    	//qual tamanho da minha lista
+    	int qtdJogadores = jogadores.size(); 
+    	 
+    	if(posicao == qtdJogadores) {
+    		//acabou o jogo
+    		JOptionPane.showMessageDialog(null,"SE FODEU" ,"errou",0);
+    		
+    	}
+    	JOptionPane.showMessageDialog(null,"passando a vez... " + jogadores.get(posicao).getApelido() ,"errou",0);
+    	this.continuarCampeonato(posicao);
+    	return jogadores.get(posicao);
+    }
 
     // Método para verificar se houve empate
     private void verificarEmpate() {
@@ -88,12 +94,23 @@ public class Campeonato {
         // Atualize a variável "empatado" de acordo
     }
 
-    
-
     // Método para imprimir o relatório final
     private void imprimirRelatorio() {
         
     }
+	
+    public void continuarCampeonatoComMesmoJogador(Jogador jogador) {
+    	  Rodada rodadaAtual;
+
+      	//como vou alternar os jogadores...
+      	rodadaAtual = jogador.criaNovaRodada();  
+      	
+      	rodadaAtual.iniciarRodada(this.getDificuldade());   	
+
+		
+	}
+
+	
 	
 	
 

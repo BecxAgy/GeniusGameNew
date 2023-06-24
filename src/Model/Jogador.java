@@ -11,6 +11,7 @@ public class Jogador {
 	private int pontuacaoTotal;
 	private int tempoJogado;
 	
+	
 	public Jogador(String nome, String apelido) {
 		this.id = UUID.randomUUID();
 		this.nome = nome;
@@ -40,7 +41,7 @@ public class Jogador {
 	}
 	
 	//alterar para cria
-	public Rodada getNovaRodada() {
+	public Rodada criaNovaRodada() {
 		Rodada novaRodada = new Rodada();
 		
 		getSequencia(novaRodada);
@@ -50,6 +51,15 @@ public class Jogador {
 		return novaRodada;
 	}
 	
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
+	}
+
 	public void getSequencia(Rodada novaRodada){
     	if(rodadas.size() >= 1) {
 			//pegar a sequencia antiga e formar uma nova sequencia com mais um
@@ -57,5 +67,16 @@ public class Jogador {
 		}else {
 			novaRodada.geraSequencia();
 		}
-    }
+    
+	}
+
+	
+	public void continuaRodadas() {
+		
+		
+	}
+
+
+
 }
+
