@@ -6,44 +6,66 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+
+
 public class ConexaoBD {
 
-    public Connection conectaBD () {
+  
+    	private Connection conexao;
+    	private static ConexaoBD instancia;
     	
-    	Connection conn= null;
-    	try {
-    		
+    	private ConexaoBD() throws SQLException {
     		String url="jdbc:sqlite:BancoGeniusGame.db";
-    		
-    		conn=DriverManager.getConnection(url);
-			
-		} catch (SQLException erro) {
-			
-			 JOptionPane.showMessageDialog(null, "  ConexaoDAO  " + erro.getMessage());
-		}
+    		this.conexao=DriverManager.getConnection(url);
+    	}
+
+    	public static ConexaoBD getIntancia() throws SQLException {
+    		if(instancia==null)
+    			instancia=new ConexaoBD();
+    		return instancia;
+    	}
     	
-    	return conn;
-    }
+    	public Connection getConexao() throws SQLException {
+    		return conexao;
+    	}
+    	
+    	 public Connection conectaBD () {
+    	    	
+    	    	Connection conn= null;
+    	    	try {
+    	    		
+    	    		String url="jdbc:sqlite:BancoGeniusGame.db";
+    	    		
+    	    		conn=DriverManager.getConnection(url);
+    				
+    			} catch (SQLException erro) {
+    				
+    				 JOptionPane.showMessageDialog(null, "  ConexaoDAO  " + erro.getMessage());
+    			}
+    	    	
+    	    	return conn;
+    	    }
 
-    public static void main(String[] args) {
-        ConexaoBD conexaoBD = new ConexaoBD();
+    	 public static void main(String[] args) throws SQLException {
+    	        ConexaoBD conexaoBD = new ConexaoBD();
 
-        // Teste de conexão
-        Connection conn = conexaoBD.conectaBD();
-        if (conn != null) {
-            JOptionPane.showMessageDialog(null, "Conexão estabelecida com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Falha ao conectar ao banco de dados.");
-        }
+    	        // Teste de conexão
+    	        Connection conn = conexaoBD.conectaBD();
+    	        if (conn != null) {
+    	            JOptionPane.showMessageDialog(null, "Conexão estabelecida com sucesso!");
+    	        } else {
+    	            JOptionPane.showMessageDialog(null, "Falha ao conectar ao banco de dados.");
+    	        }
 
-        // Fechando a conexão
-        try {
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão: " + e.getMessage());
-        }
-    }
+    	        // Fechando a conexão
+    	        try {
+    	            if (conn != null) {
+    	                conn.close();
+    	            }
+    	        } catch (SQLException e) {
+    	            JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão: " + e.getMessage());
+    	        }
+    	    }
+    	
 
 }

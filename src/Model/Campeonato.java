@@ -1,23 +1,27 @@
 package Model;
+import Controller.DAOCampeonatoSqLite;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Campeonato {
-	
+	private int id;
 	private String nome;
-	private LocalDate data;
+	private Date data;
 	private ArrayList<Jogador> jogadores;
 	private int dificuldade; 
-	private boolean empatado;
+	private DAOCampeonatoSqLite  DaoCampeonato = new DAOCampeonatoSqLite ();
 	
-	
+	public Campeonato() {
+		
+	}
 	public Campeonato(String nome,int dificuldade) {
 		this.nome = nome;
 		this.dificuldade = dificuldade;
-		this.empatado = false;
+		
 		this.jogadores = new ArrayList <Jogador>();
-		this.data = LocalDate.now();
+		this.data = Date.valueOf(LocalDate.now());
 				
 	}
 	public int getDificuldade() {
@@ -37,12 +41,15 @@ public class Campeonato {
 		this.nome = nome;
 	}
 
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setJogadores(ArrayList<Jogador> jogadores) {
+		this.jogadores = jogadores;
+	}
+	public void setData(Date date) {
+		this.data = date;
 	}
 
 	public ArrayList<Jogador> getJogadores() {
@@ -94,6 +101,12 @@ public class Campeonato {
     private void imprimirRelatorio() {
         
     }
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	
 	
 	
 

@@ -1,10 +1,10 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.UUID;
+
 
 public class Jogador {
-	private UUID id;
+	private int id;
 	private String nome;
 	private String apelido;
 	private ArrayList<Rodada> rodadas;
@@ -12,13 +12,16 @@ public class Jogador {
 	private int tempoJogado;
 	
 	public Jogador(String nome, String apelido) {
-		this.id = UUID.randomUUID();
-		this.nome = nome;
-		this.apelido = apelido;
+		this.setNome(nome);
+		this.setApelido(apelido);
 		this.setPontuacaoTotal(0);
-		this.tempoJogado = 0;
+		this.setTempoJogado(0);
 		rodadas = new ArrayList<Rodada>();
 			
+	}
+
+	public Jogador() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getPontuacaoTotal() {
@@ -58,4 +61,38 @@ public class Jogador {
 			novaRodada.geraSequencia();
 		}
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
+	}
+
+	public int getTempoJogado() {
+		return tempoJogado;
+	}
+
+	public void setTempoJogado(int tempoJogado) {
+		this.tempoJogado = tempoJogado;
+	}
+
+	
 }
