@@ -14,7 +14,7 @@ public class ConexaoBD {
     	private Connection conexao;
     	private static ConexaoBD instancia;
     	
-    	private ConexaoBD() throws SQLException {
+    	ConexaoBD() throws SQLException {
     		String url="jdbc:sqlite:BancoGeniusGame.db";
     		this.conexao=DriverManager.getConnection(url);
     	}

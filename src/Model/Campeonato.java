@@ -5,30 +5,27 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import Controller.GeniusGame;
+
 public class Campeonato {
-	
-	int id;
+	private int id;
 	private String nome;
 	private LocalDate data;
 	private ArrayList<Jogador> jogadores;
 	private int dificuldade; 
-	private boolean empatado;
+	
 	
 	
 	public Campeonato(String nome,int dificuldade) {
 		this.nome = nome;
 		this.dificuldade = dificuldade;
-		this.empatado = false;
+		
 		this.jogadores = new ArrayList <Jogador>();
 		this.data = LocalDate.now();
 				
 	}
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
+	public void setJogadores(ArrayList<Jogador> jogadores) {
+		this.jogadores = jogadores;
 	}
 	public int getDificuldade() {
 		if(this.dificuldade == 1) {
@@ -59,10 +56,8 @@ public class Campeonato {
 		return jogadores;
 	}
 
-	
-	public void setJogadores(ArrayList<Jogador> jogadores) {
-		this.jogadores = jogadores;
-	}
+
+
 
 	public void iniciarCampeonato() {
         Rodada rodadaAtual;
@@ -89,25 +84,31 @@ public class Campeonato {
     	int qtdJogadores = jogadores.size(); 
     	 
     	if(posicao == qtdJogadores) {
-    		//acabou o jogo
-    		JOptionPane.showMessageDialog(null,"SE FODEU" ,"errou",0);
     		
+    		
+    		boolean empatou = GeniusGame.houveEmpate();
+    		
+    		if(empatou) {
+    			JOptionPane.showMessageDialog(null,"Houve Empate" ,"Vamos continuar??",3);
+    			posicao = 0;
+    			
+        		
+    			this.continuarCampeonato(posicao);//continua o campeonato começando do primeiro jogador
+    		}else {
+    			GeniusGame.parabenizaJogadorVencedor();
+    			JOptionPane.showMessageDialog(null,"Fim de Jogo" ,"The end",0);
+        		
+    			System.exit(0);
+
+    		}
     	}
-    	JOptionPane.showMessageDialog(null,"passando a vez... " + jogadores.get(posicao).getApelido() ,"errou",0);
+    	JOptionPane.showMessageDialog(null,"Passando a vez para " + jogadores.get(posicao).getApelido() ,"Falhou...",0);
     	this.continuarCampeonato(posicao);
     	return jogadores.get(posicao);
     }
 
-    // Método para verificar se houve empate
-    private void verificarEmpate() {
-        // Implemente a lógica para verificar se há empate entre os jogadores
-        // Atualize a variável "empatado" de acordo
-    }
-
-    // Método para imprimir o relatório final
-    private void imprimirRelatorio() {
-        
-    }
+  
+    
 	
     public void continuarCampeonatoComMesmoJogador(Jogador jogador) {
     	  Rodada rodadaAtual;
@@ -118,6 +119,12 @@ public class Campeonato {
       	rodadaAtual.iniciarRodada(this.getDificuldade());   	
 
 		
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	

@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-
+import java.util.UUID;
 
 public class Jogador {
 	private int id;
@@ -11,12 +11,12 @@ public class Jogador {
 	private int pontuacaoTotal;
 	private int tempoJogado;
 	
-	
 	public Jogador(String nome, String apelido) {
-		this.nome = nome;
+		
+		this.setNome(nome);
 		this.apelido = apelido;
 		this.setPontuacaoTotal(0);
-		this.tempoJogado = 0;
+		this.setTempoJogado(0);
 		rodadas = new ArrayList<Rodada>();
 			
 	}
@@ -26,7 +26,7 @@ public class Jogador {
 	}
 
 	public void setPontuacaoTotal(int pontuacaoTotal) {
-		this.pontuacaoTotal = pontuacaoTotal;
+		this.pontuacaoTotal += pontuacaoTotal;
 	}
 	
 	public ArrayList<Rodada> getListaRodadas(){
@@ -50,22 +50,6 @@ public class Jogador {
 		return novaRodada;
 	}
 	
-	
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getApelido() {
 		return apelido;
@@ -89,6 +73,30 @@ public class Jogador {
 	public void continuaRodadas() {
 		
 		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getTempoJogado() {
+		return tempoJogado;
+	}
+
+	public void setTempoJogado(int tempoJogado) {
+		this.tempoJogado = tempoJogado;
 	}
 
 
