@@ -66,4 +66,8 @@ public class GeniusGame {
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> parent of 6c9772b (Projeto funcional)
 }

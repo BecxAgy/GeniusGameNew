@@ -17,7 +17,7 @@ public class ViewService {
 		lbl.setVisible(true);	
 		Timer timer;
 		
-		reproduzirSom(sound);
+		//reproduzirSom(sound);
 			
 		ActionListener tarefaAgendada = new ActionListener() {
 		    public void actionPerformed(ActionEvent evt) {
@@ -32,7 +32,7 @@ public class ViewService {
 		
 	}
 
-	public static void reproduzirSom(String sound) {
+	public void reproduzirSom(String sound) {
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(ViewService.class.getResource(sound));
             Clip clip = AudioSystem.getClip();
