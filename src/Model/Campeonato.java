@@ -1,7 +1,10 @@
 package Model;
 
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -10,7 +13,7 @@ import Controller.GeniusGame;
 public class Campeonato {
 	private int id;
 	private String nome;
-	private LocalDate data;
+	private Date data;
 	private ArrayList<Jogador> jogadores;
 	private int dificuldade; 
 	
@@ -21,9 +24,10 @@ public class Campeonato {
 		this.dificuldade = dificuldade;
 		
 		this.jogadores = new ArrayList <Jogador>();
-		this.data = LocalDate.now();
+		this.data = new Date();
 				
 	}
+	
 	public void setJogadores(ArrayList<Jogador> jogadores) {
 		this.jogadores = jogadores;
 	}
@@ -44,11 +48,11 @@ public class Campeonato {
 		this.nome = nome;
 	}
 
-	public LocalDate getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

@@ -41,6 +41,7 @@ public class Teste {
 	private Jogador jogadorAtual;
 	Jogada novaJogada = null;
 	boolean comecou = false;
+	int indexJogador = 1;
 	
 	
 	
@@ -324,6 +325,22 @@ public class Teste {
 			
 		});
 		
+		JLabel lblPontuacaoJ3 = new JLabel("");
+		lblPontuacaoJ3.setBounds(1439, 564, 92, 31);
+		panelJogo.add(lblPontuacaoJ3);
+		
+		JLabel lblPontuacaoJ2 = new JLabel("0");
+		lblPontuacaoJ2.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblPontuacaoJ2.setForeground(new Color(255, 255, 255));
+		lblPontuacaoJ2.setBounds(1439, 413, 92, 31);
+		panelJogo.add(lblPontuacaoJ2);
+		JLabel lblPontuacaoJ1 = new JLabel();
+		lblPontuacaoJ1.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblPontuacaoJ1.setForeground(new Color(255, 255, 255));
+		lblPontuacaoJ1.setText("0");
+		lblPontuacaoJ1.setBounds(1439, 272, 92, 31);
+		panelJogo.add(lblPontuacaoJ1);
+		
 		panelJogo.add(lblplay);
 		
 		JLabel lblApelidoP3 = new JLabel("");
@@ -389,6 +406,16 @@ public class Teste {
 							novaJogada.setErrou(false);
 							novaJogada.setPontuacao(10);
 							jogadorAtual.setPontuacaoTotal(10);
+							if (indexJogador == 1 ){
+								lblPontuacaoJ1.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if (indexJogador== 2 ){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if(indexJogador == 3){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							
+							}
 							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
 							
 						}else {
@@ -423,10 +450,20 @@ public class Teste {
 						acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
 						
 						if(acertou) {
-							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",1);
 							
 							novaJogada.setPontuacao(10);
 							jogadorAtual.setPontuacaoTotal(10);
+							if (indexJogador == 1 ){
+								lblPontuacaoJ1.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if (indexJogador== 2 ){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if(indexJogador == 3){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							
+							}
 							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
 							
 						}else {
@@ -458,9 +495,20 @@ public class Teste {
 						acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
 						
 						if(acertou) {
-							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",1);
 							novaJogada.setPontuacao(10);
 							jogadorAtual.setPontuacaoTotal(10);
+							if (indexJogador == 1 ){
+								lblPontuacaoJ1.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if (indexJogador== 2 ){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if(indexJogador == 3){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							
+							}
+							
 							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
 							
 						}else {
@@ -492,13 +540,24 @@ public class Teste {
 						acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
 						
 						if(acertou) {
-							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",1);
 							novaJogada.setPontuacao(10);
 							jogadorAtual.setPontuacaoTotal(10);
+							if (indexJogador == 1 ){
+								lblPontuacaoJ1.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if (indexJogador== 2 ){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							}
+							else if(indexJogador == 3){
+								lblPontuacaoJ3.setText(""+jogadorAtual.getPontuacaoTotal());
+							
+							}
+							
 							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
 							
 						}else {
-							
+							indexJogador++;
 							jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
 						}
 					}
@@ -507,20 +566,11 @@ public class Teste {
 		});
 		lblClickAzul.setBounds(246, 489, 184, 207);
 		panelJogo.add(lblClickAzul);
-		JLabel lblPontuacaoJ1 = new JLabel("New label");
-		lblPontuacaoJ1.setBounds(1439, 272, 92, 31);
-		panelJogo.add(lblPontuacaoJ1);
-		
-		JLabel lblPontuacaoJ2 = new JLabel("New label");
-		lblPontuacaoJ2.setBounds(1439, 413, 92, 31);
-		panelJogo.add(lblPontuacaoJ2);
-		
-		JLabel lblPontuacaoJ3 = new JLabel("New label");
-		lblPontuacaoJ3.setBounds(1439, 564, 92, 31);
-		panelJogo.add(lblPontuacaoJ3);
 		
 		
 		JLabel labelFundoJogo = new JLabel("New label");
+		labelFundoJogo.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		labelFundoJogo.setForeground(new Color(255, 255, 255));
 		labelFundoJogo.setIcon(new ImageIcon(Teste.class.getResource("/view/img/TelaJogo.png")));
 		labelFundoJogo.setBounds(0, 0, 1640, 924);
 		panelJogo.add(labelFundoJogo);
@@ -565,9 +615,9 @@ public class Teste {
 							//adicionando jogadores na lista
 							sistema.criarListaJogadores(dadosJogadores);
 							tabbedPane.setSelectedComponent(panelJogo);
-							String jogador3P =String.valueOf (sistema.getNovoCampeonato().getJogadores().get(2).getPontuacaoTotal()) ;
+							
 
-							lblPontuacaoJ3.setText( jogador3P);
+							
 							
 						}else {
 							JOptionPane.showMessageDialog(null,"Preencha todos os campos", "Erro!",0);
@@ -582,11 +632,7 @@ public class Teste {
 						sistema.criarListaJogadores(dadosJogadores);
 						tabbedPane.setSelectedComponent(panelJogo);
 						
-						String jogador1P =String.valueOf (sistema.getNovoCampeonato().getJogadores().get(0).getPontuacaoTotal()) ;
-						String jogador2P =String.valueOf (sistema.getNovoCampeonato().getJogadores().get(1).getPontuacaoTotal()) ;
 						
-						lblPontuacaoJ1.setText( jogador1P);
-						lblPontuacaoJ2.setText( jogador2P);
 					}
 						
 						
