@@ -20,7 +20,7 @@ import Model.Jogador;
 public class GeniusGame {
 	
 	private ArrayList<Integer> sequencia = new ArrayList<Integer>();
-	private Campeonato novoCampeonato;
+	private static Campeonato novoCampeonato;
 	
 	public GeniusGame() {
 		
@@ -79,5 +79,42 @@ public class GeniusGame {
 		return acertou;
 	}
 	
-	
+	// Método para imprimir o relatório final
+    private void imprimirRelatorio() {
+        
+    }
+
+    public static boolean houveEmpate() {
+        int pontuacaoPrimeiroJogador = novoCampeonato.getJogadores().get(0).getPontuacaoTotal();
+
+        for (int i = 1; i <novoCampeonato.getJogadores().size(); i++) {
+            if (novoCampeonato.getJogadores().get(i).getPontuacaoTotal() != pontuacaoPrimeiroJogador) {
+                return false; // Pontuações diferentes, não houve empate
+            }
+        }
+
+        return true; // Todas as pontuações são iguais, houve empate
+    }
+    
+
+
+    public static void parabenizaJogadorVencedor() {
+     int pontuacaoMaxima = 0;
+     Jogador jogadorMaximo = null;
+
+     for (Jogador jogador : novoCampeonato.getJogadores()) {
+         if (jogador.getPontuacaoTotal() > pontuacaoMaxima) {
+             pontuacaoMaxima = jogador.getPontuacaoTotal();
+             jogadorMaximo = jogador;
+         }
+     }
+
+     if (jogadorMaximo != null) {
+         String mensagem = "Parabéns, " + jogadorMaximo.getApelido() + "! Sua pontuação máxima foi: " + pontuacaoMaxima;
+         JOptionPane.showMessageDialog(null, mensagem);
+     }
+ }
+
+
+
 }

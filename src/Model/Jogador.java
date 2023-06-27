@@ -27,7 +27,7 @@ public class Jogador {
 	}
 
 	public void setPontuacaoTotal(int pontuacaoTotal) {
-		this.pontuacaoTotal = pontuacaoTotal;
+		this.pontuacaoTotal += pontuacaoTotal;
 	}
 	
 	public ArrayList<Rodada> getListaRodadas(){

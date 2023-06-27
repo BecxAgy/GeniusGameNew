@@ -40,6 +40,7 @@ public class TesteP {
 	private GeniusGame sistema = new GeniusGame();
 	private Jogador jogadorAtual;
 	Jogada novaJogada = null;
+	boolean comecou = false;
 	
 	
 	
@@ -314,10 +315,11 @@ public class TesteP {
 		lblplay.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				sistema.getNovoCampeonato().iniciarCampeonato();
-				jogadorAtual = sistema.getNovoCampeonato().getJogadores().get(0);
-				
-				
+				if(!comecou) {
+					sistema.getNovoCampeonato().iniciarCampeonato();
+					jogadorAtual = sistema.getNovoCampeonato().getJogadores().get(0);
+					comecou = true;
+				}
 		}
 			
 	
@@ -375,25 +377,29 @@ public class TesteP {
 				
 				boolean acertou;
 				
-				ViewService.brilharBotao(lblVermelhoOn, 500, null);
-				novaJogada=sistema.receberResposta(3, jogadorAtual);
-				if(novaJogada == null) {
-					
-				}else {
-				
-					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
-					
-					if(acertou) {
-						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
-						novaJogada.setErrou(false);
-						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+				ViewService.brilharBotao(lblVermelhoOn, 500, "/view/sound/sound5.wav");
+				if(comecou) {
+					novaJogada=sistema.receberResposta(3, jogadorAtual);
+					if(novaJogada == null) {
 						
 					}else {
+					
+						acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
 						
-						novaJogada.setErrou(true);
-						
-						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
-						
+						if(acertou) {
+							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",1);
+							novaJogada.setErrou(false);
+							novaJogada.setPontuacao(10);
+							jogadorAtual.setPontuacaoTotal(10);
+							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+							
+						}else {
+							
+							novaJogada.setErrou(true);
+							
+							jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+							
+						}
 					}
 				}
 			}
@@ -408,26 +414,29 @@ public class TesteP {
 
 				boolean acertou;
 				
-				ViewService.brilharBotao(lblVerdeOn, 500, null);
-				novaJogada=sistema.receberResposta(1, jogadorAtual);
-				if(novaJogada == null) {
-					
-				}else {
+				ViewService.brilharBotao(lblVerdeOn, 500, "/view/sound/sound2.wav");
 				
-					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
-					
-					if(acertou) {
-						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
-						novaJogada.setErrou(false);
-						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+				if(comecou) {
+					novaJogada=sistema.receberResposta(1, jogadorAtual);
+					if(novaJogada == null) {
 						
 					}else {
-						JOptionPane.showMessageDialog(null,"passando a vez...", "errou",0);
-						novaJogada.setErrou(true);
-						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+					
+						acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
+						
+						if(acertou) {
+							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+							
+							novaJogada.setPontuacao(10);
+							jogadorAtual.setPontuacaoTotal(10);
+							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+							
+						}else {
+							
+							jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+						}
 					}
 				}
-				
 			}
 		});
 		lblClickVerde.setBounds(498, 237, 195, 191);
@@ -440,23 +449,26 @@ public class TesteP {
 				
 				boolean acertou;
 				
-				ViewService.brilharBotao(lblAmareloOn, 500, null);
-				novaJogada=sistema.receberResposta(0, jogadorAtual);
-				if(novaJogada == null) {
-					
-				}else {
+				ViewService.brilharBotao(lblAmareloOn, 500, "/view/sound/sound1.wav");
 				
-					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
-					
-					if(acertou) {
-						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
-						novaJogada.setErrou(false);
-						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+				if(comecou) {
+					novaJogada=sistema.receberResposta(0, jogadorAtual);
+					if(novaJogada == null) {
 						
 					}else {
-						JOptionPane.showMessageDialog(null,"passando a vez...", "errou",0);
-						novaJogada.setErrou(true);
-						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+					
+						acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
+						
+						if(acertou) {
+							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+							novaJogada.setPontuacao(10);
+							jogadorAtual.setPontuacaoTotal(10);
+							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+							
+						}else {
+							
+							jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+						}
 					}
 				}
 			}
@@ -472,23 +484,25 @@ public class TesteP {
 				
 				boolean acertou;
 				
-				ViewService.brilharBotao(lblAzulOn, 500, null);
-				novaJogada= sistema.receberResposta(2, jogadorAtual);
-
-				if(novaJogada == null) {
-				}else {
-				
-					acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
-					
-					if(acertou) {
-						JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
-						novaJogada.setErrou(false);
-						sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
-						
+				ViewService.brilharBotao(lblAzulOn, 500, "/view/sound/sound3.wav");
+				if(comecou) {
+					novaJogada= sistema.receberResposta(2, jogadorAtual);
+	
+					if(novaJogada == null) {
 					}else {
-						JOptionPane.showMessageDialog(null,"passando a vez...", "errou",0);
-						novaJogada.setErrou(true);
-						jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+					
+						acertou =sistema.compararSequencia(jogadorAtual, novaJogada);
+						
+						if(acertou) {
+							JOptionPane.showMessageDialog(null,"Nova Rodada!", "Muito bem!",0);
+							novaJogada.setPontuacao(10);
+							jogadorAtual.setPontuacaoTotal(10);
+							sistema.getNovoCampeonato().continuarCampeonatoComMesmoJogador(jogadorAtual);
+							
+						}else {
+							
+							jogadorAtual = sistema.getNovoCampeonato().passaVez(jogadorAtual);
+						}
 					}
 				}
 			}
@@ -545,20 +559,35 @@ public class TesteP {
 							//colocando nome nas labels}
 							lblApelidoP3.setText(txtFieldApelido3.getText());
 							
+							//criando campeonato
+							int nDificuldade = sistema.obterDificuldade( radioFacil,  radioMedio,  radioDificil);
+							sistema.criarCampeonato(txtNomeCampeonato.getText(), nDificuldade);
 							
-						}else JOptionPane.showMessageDialog(null,"Preencha todos os campos", "Erro!",0);
+							//adicionando jogadores na lista
+							sistema.criarListaJogadores(dadosJogadores);
+							tabbedPane.setSelectedComponent(panelJogo);
+							
+							
+						}else {
+							JOptionPane.showMessageDialog(null,"Preencha todos os campos", "Erro!",0);
+						}
 
-					}
-						
+					}else {
 						//criando campeonato
 						int nDificuldade = sistema.obterDificuldade( radioFacil,  radioMedio,  radioDificil);
 						sistema.criarCampeonato(txtNomeCampeonato.getText(), nDificuldade);
 						
 						//adicionando jogadores na lista
 						sistema.criarListaJogadores(dadosJogadores);
+						tabbedPane.setSelectedComponent(panelJogo);
+					}
+						
+						
 
-					tabbedPane.setSelectedComponent(panelJogo);
-				}else JOptionPane.showMessageDialog(null,"Preencha todos os campos", "Erro!",0);
+					
+				}else {
+					JOptionPane.showMessageDialog(null,"Preencha todos os campos", "Erro!",0);
+				}
 				
 	
 			}

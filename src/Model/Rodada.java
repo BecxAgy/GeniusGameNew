@@ -73,16 +73,16 @@ public class Rodada {
     	        
     	        switch (botao) {
     	            case 0:
-    	                ViewService.brilharBotao(TesteP.lblAmareloOn, 500, null);
+    	                ViewService.brilharBotao(TesteP.lblAmareloOn, 500, "/view/sound/sound1.wav");
     	                break;
     	            case 1:
-    	                ViewService.brilharBotao(TesteP.lblVerdeOn, 500, null);
+    	                ViewService.brilharBotao(TesteP.lblVerdeOn, 500, "/view/sound/sound2.wav");
     	                break;
     	            case 2:
-    	                ViewService.brilharBotao(TesteP.lblAzulOn, 500, null);
+    	                ViewService.brilharBotao(TesteP.lblAzulOn, 500, "/view/sound/sound3.wav");
     	                break;
     	            case 3:
-    	                ViewService.brilharBotao(TesteP.lblVermelhoOn, 1000, null);
+    	                ViewService.brilharBotao(TesteP.lblVermelhoOn, 500, "/view/sound/sound5.wav");
     	                break;
     	        }
     	        
