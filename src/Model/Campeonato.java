@@ -9,6 +9,7 @@ import Controller.GeniusGame;
 
 public class Campeonato {
 	
+	int id;
 	private String nome;
 	private LocalDate data;
 	private ArrayList<Jogador> jogadores;
@@ -23,6 +24,13 @@ public class Campeonato {
 		this.jogadores = new ArrayList <Jogador>();
 		this.data = LocalDate.now();
 				
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getDificuldade() {
 		if(this.dificuldade == 1) {
@@ -53,8 +61,10 @@ public class Campeonato {
 		return jogadores;
 	}
 
-
-
+	
+	public void setJogadores(ArrayList<Jogador> jogadores) {
+		this.jogadores = jogadores;
+	}
 
 	public void iniciarCampeonato() {
         Rodada rodadaAtual;
