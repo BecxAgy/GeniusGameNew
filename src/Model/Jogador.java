@@ -1,10 +1,10 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.UUID;
+
 
 public class Jogador {
-	private UUID id;
+	private int id;
 	private String nome;
 	private String apelido;
 	private ArrayList<Rodada> rodadas;
@@ -13,7 +13,6 @@ public class Jogador {
 	
 	
 	public Jogador(String nome, String apelido) {
-		this.id = UUID.randomUUID();
 		this.nome = nome;
 		this.apelido = apelido;
 		this.setPontuacaoTotal(0);
@@ -51,6 +50,22 @@ public class Jogador {
 		return novaRodada;
 	}
 	
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getApelido() {
 		return apelido;
