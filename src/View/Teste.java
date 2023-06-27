@@ -507,13 +507,6 @@ public class Teste {
 		});
 		lblClickAzul.setBounds(246, 489, 184, 207);
 		panelJogo.add(lblClickAzul);
-		
-		
-		JLabel labelFundoJogo = new JLabel("New label");
-		labelFundoJogo.setIcon(new ImageIcon(Teste.class.getResource("/view/img/TelaJogo.png")));
-		labelFundoJogo.setBounds(0, 0, 1640, 924);
-		panelJogo.add(labelFundoJogo);
-		
 		JLabel lblPontuacaoJ1 = new JLabel("New label");
 		lblPontuacaoJ1.setBounds(1439, 272, 92, 31);
 		panelJogo.add(lblPontuacaoJ1);
@@ -525,6 +518,13 @@ public class Teste {
 		JLabel lblPontuacaoJ3 = new JLabel("New label");
 		lblPontuacaoJ3.setBounds(1439, 564, 92, 31);
 		panelJogo.add(lblPontuacaoJ3);
+		
+		
+		JLabel labelFundoJogo = new JLabel("New label");
+		labelFundoJogo.setIcon(new ImageIcon(Teste.class.getResource("/view/img/TelaJogo.png")));
+		labelFundoJogo.setBounds(0, 0, 1640, 924);
+		panelJogo.add(labelFundoJogo);
+		
 		
 		
 		JLabel lblNextTelaCadastro = new JLabel("");
@@ -546,7 +546,8 @@ public class Teste {
 					//colocando nome nas labels}
 					lblApelidoP1.setText(txtFieldApelido1.getText());
 					lblApelidoP2.setText(txtFieldApelido2.getText());
-					lblPontuacaoJ1.setText("");
+					
+					
 					
 					if(radio3Jogadores.isSelected()) {
 						//validacao
@@ -564,7 +565,9 @@ public class Teste {
 							//adicionando jogadores na lista
 							sistema.criarListaJogadores(dadosJogadores);
 							tabbedPane.setSelectedComponent(panelJogo);
-							
+							String jogador3P =String.valueOf (sistema.getNovoCampeonato().getJogadores().get(2).getPontuacaoTotal()) ;
+
+							lblPontuacaoJ3.setText( jogador3P);
 							
 						}else {
 							JOptionPane.showMessageDialog(null,"Preencha todos os campos", "Erro!",0);
@@ -578,6 +581,12 @@ public class Teste {
 						//adicionando jogadores na lista
 						sistema.criarListaJogadores(dadosJogadores);
 						tabbedPane.setSelectedComponent(panelJogo);
+						
+						String jogador1P =String.valueOf (sistema.getNovoCampeonato().getJogadores().get(0).getPontuacaoTotal()) ;
+						String jogador2P =String.valueOf (sistema.getNovoCampeonato().getJogadores().get(1).getPontuacaoTotal()) ;
+						
+						lblPontuacaoJ1.setText( jogador1P);
+						lblPontuacaoJ2.setText( jogador2P);
 					}
 						
 						
